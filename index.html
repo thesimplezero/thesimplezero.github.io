@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>thesimplezero.github.io</title>
+    <style>
+        :root {
+            --bg-color: #f8f8f8;
+            --text-color: #222;
+            --accent-color: #ffe800;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background: radial-gradient(circle at center, #fff 0%, var(--bg-color) 75%, #ebebeb 100%);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main {
+            text-align: center;
+            padding: 2rem;
+            max-width: 100%;
+        }
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            line-height: 1.1;
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+            width: 100%;
+            height: 0.5rem;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--accent-color),
+                var(--accent-color) 0.5rem,
+                var(--text-color) 0.5rem,
+                var(--text-color) 1rem
+            );
+            animation: stripe-animation 20s linear infinite;
+        }
+        @keyframes stripe-animation {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 0;
+            }
+        }
+        .construction-message {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fade-in 1s ease-out forwards 0.5s;
+        }
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>thesimplezero.github.io</h1>
+        <p id="construction-message" class="construction-message"></p>
+    </main>
+    <script>
+        const messages = [
+            "Building something amazing...",
+            "Under construction, but worth the wait!",
+            "Great things take time. Coming soon!",
+            "Pardon our dust. We're under construction.",
+            "Excellence is under construction."
+        ];
+        const messageElement = document.getElementById('construction-message');
+        messageElement.textContent = messages[Math.floor(Math.random() * messages.length)];
+    </script>
+</body>
+</html>
